@@ -2,8 +2,18 @@
 <html> 
 <head>
     <title>Mini Portfolio</title>
+    <link rel="icon" href="300x300.jpg">
 </head>
 <body>
+    <style>
+        table, th, td{
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td{
+            padding: 10px;
+        }
+    </style>
     <h1>Tonmoy Chakrabrty Joy</h1>
     <p>Hi! I'm Tonmoy, a first year student who enjoys learning new things and exploring technologies.</p>
     <a href="https://www.linkedin.com/in/tonmoy-chakrabarty-joy-0b0b0b/">A website I like</a>
@@ -13,5 +23,94 @@
         <li>Photography</li>
         <li>Football</li>
     </ul>
+
+    <br>
+    <br>
+    <h1>Image Basic syntax</h1>
+    <br>
+    <br>
+    <img width="200" height="150" src ="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX-2TXrfIjbs6FW11lCd-ochUP43ahrHomH9l-6R_GOg&s=10" alt="Random image">
+    <img width="50" height="50" src="300x300.jpg" alt="profile pic">
+    <br>
+    <br>
+    <h1>Table Basic syntax</h1>
+    <br>
+    <br>
+    <table> 
+        <tr>    
+            <th>Company</th>
+            <th>contact</th>
+            <th>country</th>
+        </tr>
+        <tr>    
+            <td>Tcj</td>
+            <td>01*********</td>
+            <td>Bangladesh</td>
+        </tr>
+        <tr>    
+            <td>ACS</td>
+            <td>01*********</td>
+            <td>Bangladesh</td>
+        </tr>
+        <tr>    
+            <td>MLBB</td>
+            <td>01*********</td>
+            <td>UsA</td>
+            <td>Gaming</td>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <h1>From Basic syntax</h1>
+    <br>
+    <br>
+    <form action="https://github.com/tonmoychakrabartyjoy/Webtech_L/blob/main/index.html" method="get">
+        <fieldset>
+            <legend>For test</legend>
+            <label for="firstname">First Name: </label>
+            <br>
+            <input type="text" id="firstname" name="fn" required>
+            <br>
+            <label for="lastname">Last Name: </label>
+            <br> 
+            <input type="text" id="lastname" name="ln" required>
+        </fieldset>
+        <br>
+        <label for="email">Email: </label>
+        <br>
+        <input type="email" id="email" name="ema" required>
+        <br>
+        <label for="pa">Password</label>
+        <br>
+        <input type="password" name="pa" minlength="8" required>
+        <br>
+        <label for="cpa">Confirm Password</label>
+        <br>
+        <input type="password" name="cpa" required>
+        <br>
+        <label for="age">Age</label>
+        <br>
+        <input type="number" name="age" min="10" max="60" required>
+        <br>
+        <label for="gender">Gender</label>
+        <br>
+        <input type="radio" name="gender" required> Male
+        <br>
+        <input type="radio" name="gender" required> Female
+        <br>
+        <label for="cou">Course</label>
+
+        <select name="cou">
+            <option value="">Select an option</option>
+            <option value="M">Math</option>
+            <option value="P">Physics</option>
+            <option value="B">Biology</option>
+        </select>
+        <br>
+        <input type="checkbox" name="terms" required>Agree?
+        <br>  <br>
+        <input type="submit" value="Create Account" >
+        <input type="reset" value="Reset">
+    </form>
 </body>
 </html>

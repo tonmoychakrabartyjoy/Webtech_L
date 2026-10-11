@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<head>
+    <title>My class Routine</title>
+</head>
+<body>
+    <style>
+        #page-title {
+            text-align: center;
+            color: darkgreen;
+            font-size: 28px;
+        }
+
+        #imgs {
+            display: block;
+            margin: 0 auto;
+        }
+
+        table, th, tr, td {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+
+        #colorR1 {
+            background-color: lightgreen;
+        }
+
+        #colorR2 {
+            background-color: lightgreen;
+        }
+
+        #colorT {
+            color: red;
+        }
+
+        tr:hover {
+            color: khaki;
+        }
+
+        #colorCFF {
+            color: greenyellow;
+        }
+
+        #fullname {
+            border-color: green;
+        }
+    </style>
+    <h1 id="page-title">Weekly Class Routine</h1>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAfb0S-waxPDaxNfbpHanD3JMwhG5To0vDWlhSZ3W-0GYTxRVagcchwS6C&s=10" alt="Aiub logo" width="50" height="50" id="imgs">
+
+    <table class="routine">
+        <tr id="colorR1">
+            <th colspan="4">Class Schedule-Fall2026</th>
+        </tr>
+        <tr id="colorR2">
+            <th>Day</th> <th>Time</th> <th>Course</th> <th>Room</th>
+        </tr>
+        <tr>
+            <td rowspan="2">Sunday</td> <td>08:30 Am</td> <td>Web Techonogoly (Theory)</td> <td>D-101</td>
+        </tr>
+        <tr>
+            <td>10:00 AM</td> <td id="colorT">Web Techonology (lab)</td> <td>LAB-3</td>
+        </tr>
+        <tr>
+            <td>Tuesday</td> <td>09:00 Am</td> <td>Database system</td> <td>D-204</td>
+        </tr>
+        <tr>
+            <td>Thursday</td> <td>11:30 Am</td> <td>Software Engineering</td> <td>D-110</td>
+        </tr>
+    </table>
+
+    <h1 id="colorCFF">Class Feedback Form</h1>
+    <form action="#">
+        <fieldset>
+            <legend>Class Feedback</legend>
+            <label for="fullname">Full Name: </label>
+            <input type="text" name="fn" id="fullname" minlength="3" required>
+            <br>
+            <br>
+            <label for="email">Email: </label>
+            <input type="email" name="em" id="email" required>
+            <br>
+            <br>
+            <label for="classD">Class Date: </label>
+            <input type="date" name="dt" id="classD" required>
+            <br>
+            <br>
+            <label for="course">Course: </label>
+            <input type="text" name="cou" id="course" required>
+            <br>
+            <br>
+            <label for="raitting">Ratting(1 to 5): </label>
+            <input type="number" name="re" id="raitting" required>
+            <br>
+            <br>
+            <label for="ct">Class Type: </label>
+            <input type="radio" name="rd" id="theory" value="Theory">
+            <label for="theory">Theory</label>
+            <input type="radio" name="rd" id="lab" value="Lab">
+            <label for="lab">Lab</label>
+            <br>
+            <br>
+            <label for="day">Day: </label>
+            <select name="day" id="day" required>
+                <option value="">Select a day</option>
+                <option value="Sunday">Sunday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+            </select>
+            <br>
+            <br>
+            <label for="comment">Comment: </label>
+            <br>
+            <textarea name="co" id="comment" style="width: 500px; height: 100px;"></textarea>
+            <br>
+            <br>
+            <input type="submit" name="sub" id="sub" value="Send Feedback">
+        </fieldset>
+    </form>
+
+</body>

@@ -1,0 +1,419 @@
+/* ==========================================================================
+   Campus Lost and Found Platform - Report Lost Property (report_lost.css)
+   Course: CSC 3215 Web Technologies
+   Standard Layout & Form Stylesheet
+   ========================================================================== */
+
+/* 1. Global Reset & Box Model */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 2. Top Sticky Navbar */
+.top-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 12px 28px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.logo-area h1 {
+  font-size: 19px;
+  color: #1a73e8;
+  font-weight: 700;
+}
+
+.logo-area p {
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* Nav Search Bar */
+.nav-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-search label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.nav-search input[type="search"] {
+  width: 260px;
+  padding: 7px 12px;
+  font-size: 13px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav-search input[type="search"]:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.15);
+}
+
+.nav-search button {
+  padding: 7px 14px;
+  background-color: #1a73e8;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.nav-search button:hover {
+  background-color: #1557b0;
+}
+
+/* Nav User Menu */
+.user-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.user-nav ul li a {
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  padding: 6px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.user-nav ul li a:hover {
+  background-color: #f1f5f9;
+  color: #1a73e8;
+}
+
+/* 3. Main Portal Container (Sidebar + Content) */
+.layout-container {
+  display: flex;
+  flex: 1;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 250px;
+  min-width: 250px;
+  background-color: #0f172a;
+  color: #f8fafc;
+  padding: 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar h3 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: #94a3b8;
+  margin-bottom: 6px;
+  padding-left: 8px;
+}
+
+.sidebar-menu ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sidebar-menu ul li a {
+  display: block;
+  text-decoration: none;
+  color: #cbd5e1;
+  font-size: 14px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.sidebar-menu ul li a:hover,
+.sidebar-menu ul li a.active {
+  background-color: #1a73e8;
+  color: #ffffff;
+}
+
+.help-box {
+  margin-top: auto;
+  background-color: #1e293b;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+}
+
+.help-box h4 {
+  font-size: 13px;
+  color: #38bdf8;
+  margin-bottom: 6px;
+}
+
+.help-box p {
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+/* 4. Workspace & Form Area */
+.main-content {
+  flex: 1;
+  padding: 32px 40px;
+  background-color: #f8fafc;
+  overflow-y: auto;
+}
+
+.page-header {
+  margin-bottom: 24px;
+}
+
+.breadcrumbs {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 6px;
+}
+
+.page-header h2 {
+  font-size: 24px;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #64748b;
+}
+
+/* Form Wrapper Card */
+.form-wrapper {
+  max-width: 680px;
+  margin: 0 auto;
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Toggle Tabs (Lost vs Found) */
+.form-toggle-tabs {
+  display: flex;
+  background-color: #f1f5f9;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.tab-btn {
+  flex: 1;
+  text-align: center;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.active-tab {
+  background-color: #1a73e8;
+  color: #ffffff;
+}
+
+.inactive-tab {
+  background-color: #e2e8f0;
+  color: #475569;
+}
+
+.inactive-tab:hover {
+  background-color: #cbd5e1;
+  color: #0f172a;
+}
+
+/* Fieldset and Legend */
+.report-form {
+  padding: 28px 32px;
+}
+
+.form-fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.form-fieldset legend {
+  font-size: 16px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #e2e8f0;
+  width: 100%;
+  padding-bottom: 6px;
+}
+
+/* Form Groups & Inputs */
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #334155;
+  margin-bottom: 6px;
+}
+
+.required {
+  color: #d93025;
+}
+
+.field-hint {
+  display: block;
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+/* Standard Inputs & Selects */
+input[type="text"],
+input[type="date"],
+input[type="time"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 14px;
+  font-size: 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  background-color: #ffffff;
+  color: #1e293b;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Attribute Selectors & Focus Effects */
+input[type="text"]:focus,
+input[type="date"]:focus,
+input[type="time"]:focus,
+select:focus,
+textarea:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.15);
+}
+
+/* Two-Column Inline Split for Date and Time */
+.form-row-split {
+  display: flex;
+  gap: 16px;
+}
+
+.form-row-split .form-group {
+  flex: 1;
+}
+
+/* File Upload Box */
+.file-upload-box {
+  border: 2px dashed #cbd5e1;
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #f8fafc;
+  text-align: center;
+}
+
+.file-upload-box input[type="file"] {
+  font-size: 13px;
+  color: #475569;
+}
+
+.file-instructions {
+  font-size: 11px;
+  color: #64748b;
+  margin-top: 6px;
+}
+
+/* Form Action Buttons */
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn-submit {
+  flex: 2;
+  background-color: #1a73e8;
+  color: #ffffff;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-submit:hover {
+  background-color: #1557b0;
+}
+
+.btn-reset {
+  flex: 1;
+  background-color: #f1f5f9;
+  color: #475569;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-reset:hover {
+  background-color: #e2e8f0;
+  color: #0f172a;
+}
+
+/* 5. Global Footer */
+.footer {
+  background-color: #ffffff;
+  border-top: 1px solid #e2e8f0;
+  text-align: center;
+  padding: 16px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.footer p:last-child {
+  margin-top: 4px;
+  color: #94a3b8;
+}

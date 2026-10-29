@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Report Lost Property - Campus Lost and Found</title>
+  <link rel="stylesheet" href="report_lost.css">
+</head>
+<body>
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="top-navbar">
+    <div class="logo-area">
+      <h1>Campus Lost &amp; Found</h1>
+      <p>AIUB Student &amp; Staff Portal</p>
+    </div>
+
+    <!-- Quick Search -->
+    <form class="nav-search" action="items_browse.html" method="GET">
+      <label for="quick-search">Search:</label>
+      <input type="search" id="quick-search" name="q" placeholder="Search lost or found items...">
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- User Navigation Links -->
+    <nav class="user-nav">
+      <ul>
+        <li><a href="dashboard.html">🔔 Notifications (3)</a></li>
+        <li><a href="profile.html">👤 Tonmoy (Student)</a></li>
+        <li><a href="login.html">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Container: Sidebar + Workspace -->
+  <div class="layout-container">
+
+    <!-- Role-Based Sidebar Navigation -->
+    <aside class="sidebar">
+      <h3>Portal Navigation</h3>
+      <nav class="sidebar-menu">
+        <ul>
+          <li><a href="dashboard.html">🏠 Dashboard</a></li>
+          <li><a href="items_browse.html">🔍 Browse Listings</a></li>
+          <li><a href="report_lost.html" class="active"><strong>➕ Report Lost Item</strong></a></li>
+          <li><a href="report_found.html">➕ Report Found Item</a></li>
+          <li><a href="report_history.html">📋 My Reports &amp; Claims</a></li>
+          <li><a href="profile.html">⚙️ Profile &amp; Settings</a></li>
+          <li><a href="login.html">🚪 Sign Out</a></li>
+        </ul>
+      </nav>
+
+      <section class="help-box">
+        <h4>Need Urgent Assistance?</h4>
+        <p>Visit the Central Security Desk on the Ground Floor of Building D or call Ext: 111.</p>
+      </section>
+    </aside>
+
+    <!-- Main Workspace Area -->
+    <main class="main-content">
+
+      <!-- Breadcrumbs and Header -->
+      <div class="page-header">
+        <p class="breadcrumbs">Portal &gt; Lost Item Management &gt; Report Lost Property</p>
+        <h2>File a Lost Property Report</h2>
+        <p class="subtitle">Submit verified details to help campus security and fellow students locate your misplaced belongings.</p>
+      </div>
+
+      <!-- Centered Report Card / Form Container -->
+      <div class="form-wrapper">
+
+        <!-- Tab Toggle (Matching Proposal Wireframe UI) -->
+        <div class="form-toggle-tabs">
+          <a href="report_lost.html" class="tab-btn active-tab">Lost Item</a>
+          <a href="report_found.html" class="tab-btn inactive-tab">Found Item</a>
+        </div>
+
+        <form action="report_history.html" method="POST" enctype="multipart/form-data" class="report-form">
+          
+          <fieldset class="form-fieldset">
+            <legend>Item Identification Details</legend>
+
+            <!-- 1. Item Name -->
+            <div class="form-group">
+              <label for="item_name">Item Name: <span class="required">*</span></label>
+              <input type="text" id="item_name" name="item_name" placeholder="e.g., Casio FX-991EX Calculator, Navy Blue Backpack" required minlength="3">
+            </div>
+
+            <!-- 2. Item Category -->
+            <div class="form-group">
+              <label for="item_category">Category: <span class="required">*</span></label>
+              <select id="item_category" name="item_category" required>
+                <option value="">-- Select a Category --</option>
+                <option value="Electronics">Electronics (Laptops, Phones, Chargers, Calculators)</option>
+                <option value="Bags & Wallets">Bags &amp; Wallets (Backpacks, Purses)</option>
+                <option value="Documents & IDs">Documents &amp; Student/Faculty IDs</option>
+                <option value="Books & Stationery">Books, Notebooks &amp; Stationery</option>
+                <option value="Clothing & Accessories">Clothing &amp; Accessories (Watches, Glasses)</option>
+                <option value="Keys">Keys &amp; Locker Access Tokens</option>
+                <option value="Other">Other Personal Possessions</option>
+              </select>
+            </div>
+
+            <!-- 3. Detailed Description -->
+            <div class="form-group">
+              <label for="item_description">Description (Distinct Features): <span class="required">*</span></label>
+              <textarea id="item_description" name="item_description" rows="4" placeholder="Write distinct marks, color shades, stickers, brand names, or scratches (within 200 words)..." required></textarea>
+              <small class="field-hint">Mention identifiable marks without giving away secret passwords/codes.</small>
+            </div>
+
+            <!-- 4. Campus Location -->
+            <div class="form-group">
+              <label for="lost_location">Last Seen Campus Location: <span class="required">*</span></label>
+              <select id="lost_location" name="lost_location" required>
+                <option value="">-- Select Campus Location --</option>
+                <option value="Building A">Building A (Administrative Block)</option>
+                <option value="Building B">Building B (Engineering Labs)</option>
+                <option value="Building C">Building C (Architecture &amp; Arts)</option>
+                <option value="Building D">Building D (Classrooms &amp; Security Desk)</option>
+                <option value="Library">Central Library (Annex / 3rd Floor)</option>
+                <option value="Cafeteria">Campus Main Cafeteria</option>
+                <option value="Sports Field">Football Field / Gymnasium</option>
+                <option value="Basement Parking">Basement Parking Area</option>
+              </select>
+            </div>
+
+            <!-- 5. Date & Time Row (Two-Column inline layout) -->
+            <div class="form-row-split">
+              <div class="form-group">
+                <label for="lost_date">Loss Date: <span class="required">*</span></label>
+                <input type="date" id="lost_date" name="lost_date" required>
+              </div>
+
+              <div class="form-group">
+                <label for="lost_time">Approximate Time: <span class="required">*</span></label>
+                <input type="time" id="lost_time" name="lost_time" required>
+              </div>
+            </div>
+
+            <!-- 6. Photo Upload Section -->
+            <div class="form-group">
+              <label for="item_image">Upload Item Reference Image:</label>
+              <div class="file-upload-box">
+                <input type="file" id="item_image" name="item_image" accept="image/png, image/jpeg, image/jpg">
+                <p class="file-instructions">Supported formats: JPG, PNG (Max file size: 5MB). Uploading a photo greatly accelerates owner verification.</p>
+              </div>
+            </div>
+
+            <!-- Form Action Buttons -->
+            <div class="form-actions">
+              <button type="submit" class="btn-submit">Submit Lost Report</button>
+              <button type="reset" class="btn-reset">Reset Form</button>
+            </div>
+
+          </fieldset>
+
+        </form>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Campus Lost and Found Platform | American International University-Bangladesh (AIUB)</p>
+    <p>CSC 3215 Web Technologies Project | Team <code>HTTP/1.1 200 OK</code></p>
+  </footer>
+
+</body>
+</html>

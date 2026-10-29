@@ -2,43 +2,185 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Campus Lost and Found</title>
+  <title>User Dashboard - Campus Lost and Found</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Top Navbar -->
-  <header class="navbar">
-    <a href="index.html" class="logo">Campus Lost &amp; Found</a>
-    <div class="user-menu">
-      <span>👤 Toriqul (Student)</span>
+  <!-- 1. Top Navigation Bar -->
+  <header>
+    <div>
+      <h1>Campus Lost &amp; Found</h1>
+      <p>AIUB Student &amp; Staff Portal</p>
     </div>
-  </header>
 
-  <!-- Body with Sidebar and Content -->
-  <div class="layout-container">
-    <aside class="sidebar">
+    <!-- Quick Search Form -->
+    <form action="items_browse.html" method="GET">
+      <label for="dash-search">Search:</label>
+      <input type="search" id="dash-search" name="q" placeholder="Search lost items, books, bags...">
+      <button type="submit">Search</button>
+    </form>
+
+    <!-- User Profile & Notifications Shortcut -->
+    <nav aria-label="User Utilities">
       <ul>
-        <li><a href="dashboard.html" class="active">Dashboard</a></li>
-        <li><a href="items_browse.html">Browse Listings</a></li>
-        <li><a href="report_lost.html">Report Lost Item</a></li>
-        <li><a href="report_found.html">Report Found Item</a></li>
-        <li><a href="report_history.html">My Reports &amp; Claims</a></li>
-        <li><a href="profile.html">Profile Settings</a></li>
+        <li><a href="notifications.html">🔔 Notifications (3)</a></li>
+        <li><a href="profile.html">👤 Toriqul (Student)</a></li>
         <li><a href="login.html">Logout</a></li>
       </ul>
+    </nav>
+  </header>
+
+  <hr>
+
+  <!-- 2. Main Portal Layout (Sidebar + Workspace) -->
+  <div>
+
+    <!-- Role-based Navigation Sidebar -->
+    <aside>
+      <h3>Portal Navigation</h3>
+      <nav aria-label="Main Navigation">
+        <ul>
+          <li><a href="dashboard.html"><strong>🏠 Dashboard</strong></a></li>
+          <li><a href="items_browse.html">🔍 Browse Listings</a></li>
+          <li><a href="report_lost.html">➕ Report Lost Property</a></li>
+          <li><a href="report_found.html">➕ Report Found Property</a></li>
+          <li><a href="report_history.html">📋 My Reports &amp; Claims</a></li>
+          <li><a href="profile.html">⚙️ Profile &amp; Settings</a></li>
+          <li><a href="login.html">🚪 Sign Out</a></li>
+        </ul>
+      </nav>
+
+      <hr>
+
+      <!-- Quick Support Box -->
+      <section>
+        <h4>Campus Security Desk</h4>
+        <p>Location: Ground Floor, Building D</p>
+        <p>Helpline: +880 2-8414046-9 (Ext: 111)</p>
+      </section>
     </aside>
 
-    <main class="main-content">
-      <!-- Member inserts page-specific forms, tables, or item cards here -->
-      <h2>Page Title</h2>
-      <p>Content goes here...</p>
+    <hr>
+
+    <!-- 3. Dynamic Dashboard Workspace -->
+    <main>
+
+      <!-- Greeting Section -->
+      <section>
+        <h2>Welcome back, Toriqul!</h2>
+        <p>Manage your reported lost properties, track submitted claims, and read campus recovery alerts.</p>
+      </section>
+
+      <!-- Metric Cards (Overview metrics of personal active reports) -->
+      <section>
+        <h3>My Activity Overview</h3>
+
+        <div>
+          <!-- Metric 1: Active Lost Reports -->
+          <article>
+            <h4>Active Lost Reports</h4>
+            <p><strong>02</strong></p>
+            <p>Items awaiting identification</p>
+            <a href="report_history.html?type=lost">View Active Reports &rarr;</a>
+          </article>
+
+          <!-- Metric 2: Found Items Reported -->
+          <article>
+            <h4>Found Items Reported</h4>
+            <p><strong>01</strong></p>
+            <p>Reported by you for safekeeping</p>
+            <a href="report_history.html?type=found">View Found Posts &rarr;</a>
+          </article>
+
+          <!-- Metric 3: Pending Claims -->
+          <article>
+            <h4>Pending Claims</h4>
+            <p><strong>01</strong></p>
+            <p>Under Security Officer review</p>
+            <a href="report_history.html?tab=claims">Track Claim Progress &rarr;</a>
+          </article>
+
+          <!-- Metric 4: Successfully Recovered -->
+          <article>
+            <h4>Items Recovered</h4>
+            <p><strong>03</strong></p>
+            <p>Handed over and resolved</p>
+            <a href="report_history.html?status=recovered">View Resolved &rarr;</a>
+          </article>
+        </div>
+      </section>
+
+      <hr>
+
+      <!-- Navigation Action Shortcuts -->
+      <section>
+        <h3>Quick Shortcuts</h3>
+        <p>Select a quick action below to immediately submit or search for items:</p>
+        <p>
+          <a href="report_lost.html"><button type="button">+ Report Lost Item</button></a>
+          <a href="report_found.html"><button type="button">+ Report Found Item</button></a>
+          <a href="items_browse.html"><button type="button">🔍 Browse Campus Directory</button></a>
+        </p>
+      </section>
+
+      <hr>
+
+      <!-- Two-Column Feed: Announcements + Claims Status -->
+      <div>
+
+        <!-- Left: Campus Announcements -->
+        <section>
+          <h3>System &amp; Campus Announcements</h3>
+
+          <article>
+            <h4>📢 Security Office Central Locker Handover Routine</h4>
+            <p><small>Published: 28 October 2026 | Source: Security Office Administration</small></p>
+            <p>All items recovered from Building D and the University Cafeteria during the midterm examination week will be archived at the Central Security Vault by 5:00 PM every Thursday. Please ensure your claims are submitted online with matching ID verification before visiting the desk.</p>
+          </article>
+
+          <article>
+            <h4>📢 Electronic Belongings Verification Requirement</h4>
+            <p><small>Published: 20 October 2026 | Source: Campus Administration</small></p>
+            <p>When claiming laptops, tablets, or mobile devices, claimants must unlock the device or present the matching serial number / purchase invoice to the duty officer.</p>
+          </article>
+        </section>
+
+        <hr>
+
+        <!-- Right: Recent Notification & Pending Claim Status -->
+        <section>
+          <h3>Pending Claim Notifications</h3>
+
+          <ul>
+            <li>
+              <strong>Claim #CLM-2026-081: Navy Blue Backpack</strong><br>
+              <em>Submitted Date: 26 Oct 2026</em><br>
+              Status: <strong>Under Security Verification</strong><br>
+              Security Note: <em>"Matching color and tag verified. Please bring your student ID card to the Building D security office for collection."</em><br>
+              <a href="report_history.html">View Full Details</a>
+            </li>
+            <br>
+            <li>
+              <strong>System Match Alert: Scientific Calculator (Casio fx-991EX)</strong><br>
+              <em>Logged: 27 Oct 2026</em><br>
+              Note: <em>"A found item reported in Room D-204 matches your lost listing criteria."</em><br>
+              <a href="items_browse.html">Inspect Match &rarr;</a>
+            </li>
+          </ul>
+        </section>
+
+      </div>
+
     </main>
   </div>
 
-  <!-- Global Footer -->
-  <footer class="footer">
-    <p>&copy; 2026 Campus Lost and Found Platform | AIUB</p>
+  <hr>
+
+  <!-- 4. Global Footer -->
+  <footer>
+    <p>&copy; 2026 Campus Lost and Found Platform | American International University-Bangladesh (AIUB)</p>
+    <p>CSC 3215 Web Technologies Project | Team HTTP 200</p>
   </footer>
 
 </body>

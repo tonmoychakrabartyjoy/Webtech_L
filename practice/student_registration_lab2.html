@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Registration & Dynamic Record</title>
+  <style>
+    /* 1. Base reset and layout */
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #f7f9fb;
+      padding: 30px;
+      margin: 0;
+    }
+
+    #page-title {
+      text-align: center;
+      color: #1b4d3e;
+      font-size: 28px;
+      margin-bottom: 25px;
+    }
+
+    /* 2. Container styling */
+    .container {
+      max-width: 750px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 24px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    }
+
+    /* 3. Fieldset & Legend */
+    fieldset {
+      border: 1px solid #1b4d3e;
+      border-radius: 6px;
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    legend {
+      font-weight: bold;
+      color: #1b4d3e;
+      padding: 0 8px;
+      font-size: 18px;
+    }
+
+    /* 4. Form controls styling */
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    label {
+      display: inline-block;
+      width: 170px;
+      font-weight: 600;
+      vertical-align: top;
+      color: #333333;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    select {
+      width: 320px;
+      padding: 7px 10px;
+      border: 1.5px solid #cccccc;
+      border-radius: 4px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #1b4d3e;
+    }
+
+    .error-msg {
+      color: #d93025;
+      font-size: 12px;
+      margin-left: 10px;
+      display: inline-block;
+    }
+
+    .radio-group {
+      display: inline-block;
+    }
+
+    .btn-container {
+      margin-top: 15px;
+      margin-left: 170px;
+    }
+
+    button {
+      background-color: #1b4d3e;
+      color: #ffffff;
+      border: none;
+      padding: 9px 22px;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #14372c;
+    }
+
+    /* 5. Dynamic Table Styling */
+    h2.table-heading {
+      color: #1b4d3e;
+      font-size: 20px;
+      margin-top: 25px;
+      margin-bottom: 12px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    table, th, td {
+      border: 1px solid #333333;
+    }
+
+    th, td {
+      padding: 9px 12px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #d4edda;
+      color: #155724;
+      font-weight: bold;
+    }
+
+    tr:hover {
+      background-color: khaki;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 id="page-title">Student Registration &amp; Dynamic Record</h1>
+
+    <!-- Registration Form -->
+    <form id="student-form" onsubmit="return validateAndAddStudent(event)">
+      <fieldset>
+        <legend>Add New Student</legend>
+
+        <!-- Full Name -->
+        <div class="form-group">
+          <label for="fullname">Full Name:</label>
+          <input type="text" id="fullname" name="fullname" placeholder="Enter full name">
+          <span id="name-error" class="error-msg"></span>
+        </div>
+
+        <!-- Student ID -->
+        <div class="form-group">
+          <label for="student-id">Student ID:</label>
+          <input type="text" id="student-id" name="student_id" placeholder="XX-XXXXX-X">
+          <span id="id-error" class="error-msg"></span>
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Institutional Email:</label>
+          <input type="email" id="email" name="email" placeholder="student@aiub.edu">
+          <span id="email-error" class="error-msg"></span>
+        </div>
+
+        <!-- CGPA -->
+        <div class="form-group">
+          <label for="cgpa">CGPA (0.00 - 4.00):</label>
+          <input type="number" step="0.01" id="cgpa" name="cgpa" placeholder="3.50">
+          <span id="cgpa-error" class="error-msg"></span>
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" placeholder="At least 6 characters">
+          <span id="pass-error" class="error-msg"></span>
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label for="confirm-password">Confirm Password:</label>
+          <input type="password" id="confirm-password" name="confirm_password" placeholder="Re-enter password">
+          <span id="conpass-error" class="error-msg"></span>
+        </div>
+
+        <!-- Department Dropdown -->
+        <div class="form-group">
+          <label for="department">Department:</label>
+          <select id="department" name="department">
+            <option value="">-- Select Department --</option>
+            <option value="CSE">CSE</option>
+            <option value="EEE">EEE</option>
+            <option value="BBA">BBA</option>
+          </select>
+          <span id="dept-error" class="error-msg"></span>
+        </div>
+
+        <!-- Gender Radios -->
+        <div class="form-group">
+          <label>Gender:</label>
+          <div class="radio-group">
+            <input type="radio" id="gender-male" name="gender" value="Male">
+            <label for="gender-male" style="width: auto; font-weight: normal; margin-right: 15px;">Male</label>
+            <input type="radio" id="gender-female" name="gender" value="Female">
+            <label for="gender-female" style="width: auto; font-weight: normal;">Female</label>
+          </div>
+          <span id="gender-error" class="error-msg"></span>
+        </div>
+
+        <!-- Terms Checkbox -->
+        <div class="form-group" style="margin-left: 170px;">
+          <input type="checkbox" id="terms" name="terms">
+          <label for="terms" style="width: auto; font-weight: normal;">I agree to the terms and rules</label>
+          <span id="terms-error" class="error-msg"></span>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="btn-container">
+          <button type="submit" id="btn-submit">Register &amp; Add to Table</button>
+        </div>
+      </fieldset>
+    </form>
+
+    <!-- Table Container -->
+    <h2 class="table-heading">Registered Student Records</h2>
+    <div id="table-container"></div>
+  </div>
+
+  <script>
+    // 1. Initial Array of Objects (following Theory 5 syllabus)
+    let students = [
+      { name: "Rahim", id: "22-12345-1", email: "rahim@aiub.edu", dept: "CSE", cgpa: 3.50 },
+      { name: "Karim", id: "23-54321-2", email: "karim@aiub.edu", dept: "EEE", cgpa: 3.30 },
+      { name: "Nadia", id: "21-98765-3", email: "nadia@aiub.edu", dept: "BBA", cgpa: 3.60 }
+    ];
+
+    // Helper: Reset all inline error spans and input borders
+    function clearErrors() {
+      const errorSpans = document.querySelectorAll(".error-msg");
+      errorSpans.forEach(function(span) {
+        span.innerText = "";
+      });
+
+      const inputs = document.querySelectorAll("input, select");
+      inputs.forEach(function(input) {
+        input.style.borderColor = "#cccccc";
+      });
+    }
+
+    // Helper: Highlight error on field
+    function setError(inputElement, errorElement, message) {
+      if (inputElement) {
+        inputElement.style.borderColor = "#d93025";
+      }
+      errorElement.innerText = message;
+    }
+
+    // 2. Dynamic Table Generation function
+    function renderTable() {
+      const container = document.getElementById("table-container");
+      container.innerHTML = ""; // Clear existing table to re-render
+
+      let table = document.createElement("table");
+
+      // Table Header Row
+      let headerRow = document.createElement("tr");
+      let columns = ["Name", "Student ID", "Email", "Department", "CGPA"];
+
+      for (let col of columns) {
+        let th = document.createElement("th");
+        th.innerText = col;
+        headerRow.appendChild(th);
+      }
+      table.appendChild(headerRow);
+
+      // Iterate through Array of Objects with for...of
+      for (let s of students) {
+        let row = document.createElement("tr");
+
+        let tdName = document.createElement("td");
+        tdName.innerText = s.name;
+        row.appendChild(tdName);
+
+        let tdId = document.createElement("td");
+        tdId.innerText = s.id;
+        row.appendChild(tdId);
+
+        let tdEmail = document.createElement("td");
+        tdEmail.innerText = s.email;
+        row.appendChild(tdEmail);
+
+        let tdDept = document.createElement("td");
+        tdDept.innerText = s.dept;
+        row.appendChild(tdDept);
+
+        let tdCgpa = document.createElement("td");
+        tdCgpa.innerText = Number(s.cgpa).toFixed(2);
+        row.appendChild(tdCgpa);
+
+        table.appendChild(row);
+      }
+
+      container.appendChild(table);
+    }
+
+    // 3. Form Validation and Record Addition Handler
+    function validateAndAddStudent(event) {
+      event.preventDefault(); // Stop standard form submission / reload
+      clearErrors();
+
+      let isValid = true;
+
+      // Extract values
+      let nameInput = document.getElementById("fullname");
+      let idInput = document.getElementById("student-id");
+      let emailInput = document.getElementById("email");
+      let cgpaInput = document.getElementById("cgpa");
+      let passInput = document.getElementById("password");
+      let conpassInput = document.getElementById("confirm-password");
+      let deptInput = document.getElementById("department");
+      let termsInput = document.getElementById("terms");
+
+      let nameVal = nameInput.value.trim();
+      let idVal = idInput.value.trim();
+      let emailVal = emailInput.value.trim();
+      let cgpaVal = parseFloat(cgpaInput.value);
+      let passVal = passInput.value;
+      let conpassVal = conpassInput.value;
+      let deptVal = deptInput.value;
+
+      // Gender check
+      let genderRadios = document.getElementsByName("gender");
+      let genderSelected = false;
+      for (let r of genderRadios) {
+        if (r.checked) {
+          genderSelected = true;
+          break;
+        }
+      }
+
+      // Check 1: Name validation
+      if (nameVal === "") {
+        setError(nameInput, document.getElementById("name-error"), "Name must not be empty");
+        isValid = false;
+      } else if (nameVal.length < 3) {
+        setError(nameInput, document.getElementById("name-error"), "Name must be at least 3 characters");
+        isValid = false;
+      }
+
+      // Check 2: Student ID validation (Format check)
+      if (idVal === "") {
+        setError(idInput, document.getElementById("id-error"), "Student ID is required");
+        isValid = false;
+      }
+
+      // Check 3: Email validation
+      if (emailVal === "") {
+        setError(emailInput, document.getElementById("email-error"), "Email is required");
+        isValid = false;
+      } else if (!emailVal.includes("@") || !emailVal.includes(".")) {
+        setError(emailInput, document.getElementById("email-error"), "Enter a valid email address");
+        isValid = false;
+      }
+
+      // Check 4: CGPA range (0.00 to 4.00)
+      if (isNaN(cgpaVal) || cgpaVal < 0 || cgpaVal > 4.00) {
+        setError(cgpaInput, document.getElementById("cgpa-error"), "CGPA must be between 0.00 and 4.00");
+        isValid = false;
+      }
+
+      // Check 5: Password length
+      if (passVal.length < 6) {
+        setError(passInput, document.getElementById("pass-error"), "Password must be at least 6 characters");
+        isValid = false;
+      }
+
+      // Check 6: Password matching
+      if (passVal !== conpassVal || conpassVal === "") {
+        setError(conpassInput, document.getElementById("conpass-error"), "Passwords do not match");
+        isValid = false;
+      }
+
+      // Check 7: Department selection
+      if (deptVal === "") {
+        setError(deptInput, document.getElementById("dept-error"), "Please select a department");
+        isValid = false;
+      }
+
+      // Check 8: Gender selection
+      if (!genderSelected) {
+        document.getElementById("gender-error").innerText = "Please select a gender";
+        isValid = false;
+      }
+
+      // Check 9: Terms checkbox
+      if (!termsInput.checked) {
+        document.getElementById("terms-error").innerText = "You must agree before submitting";
+        isValid = false;
+      }
+
+      // If all checks pass
+      if (isValid) {
+        // Create new student object and push to array
+        let newStudent = {
+          name: nameVal,
+          id: idVal,
+          email: emailVal,
+          dept: deptVal,
+          cgpa: cgpaVal
+        };
+
+        students.push(newStudent);
+
+        // Re-render dynamic table
+        renderTable();
+
+        // Reset form inputs
+        document.getElementById("student-form").reset();
+        alert("Student registered and added to the record table successfully!");
+      }
+
+      return false; // Prevent submit
+    }
+
+    // Render table on initial page load
+    window.onload = function() {
+      renderTable();
+    };
+  </script>
+</body>
+</html>

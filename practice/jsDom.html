@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Course Announcement Card</title>
+    </head>
+    <body>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 6px 12px;
+            }
+            th {
+                background-color: #d4edda;
+            }
+        </style>
+
+        <h1>Create Table using JS</h1>
+        <form onsubmit="return addStudent(event)">
+            <legend>Input Information</legend>
+            <label for="name">Name</label>
+            <br>
+            <input type="text" id="name" class="name" minlength="3" required>
+            <br><br>
+            <label for="id">ID</label>
+            <br>
+            <input type="text" id="id" class="id" minlength="3" required>
+            <br><br>
+            <label for="cgpa">CGPA</label>
+            <br>
+            <input type="number" id="cgpa" class="cgpa" step="0.01" min="0" max="4" required>
+            <br><br>
+            <button type="submit" style="color: red;">Submit</button>
+        </form>
+
+        <div id="table-container"></div>
+
+        <script>
+            let student = [
+                {name: "Tonmoy", Id: "24-57838-2", cgpa: 3.92}
+            ];
+            function renderTable (){
+
+                let container = document.getElementById("table-container");
+                container.innerHTML = "";
+                
+                let table = document.createElement("table");
+
+                let table_tr = document.createElement("tr");
+                table.appendChild(table_tr);
+
+                let table_th_name = document.createElement("th");
+                table_th_name.innerText = "Name"
+                table_tr.appendChild(table_th_name);
+
+                let table_th_id = document.createElement("th");
+                table_th_id.innerText = "ID";
+                table_tr.appendChild(table_th_id);
+
+                let table_th_cgpa = document.createElement("th");
+                table_th_cgpa.innerText = "CGPA";
+                table_tr.appendChild(table_th_cgpa);
+
+                
+
+                for(let s of student){
+                    let table_row = document.createElement("tr");
+                    table.appendChild(table_row);
+
+                    let td_name = document.createElement("td");
+                    td_name.innerText = s.name;
+                    table_row.appendChild(td_name);
+
+                    let td_id = document.createElement("td");
+                    td_id.innerText = s.Id;
+                    table_row.appendChild(td_id);
+
+                    let td_cgpa = document.createElement("td");
+                    td_cgpa.innerText = s.cgpa;
+                    table_row.appendChild(td_cgpa);
+                }
+                
+                container.appendChild(table);
+            };
+            
+
+
+            function addStudent(event){
+                event.preventDefault();
+                let name = document.getElementById("name").value;
+                let id = document.getElementById("id").value;
+                let cgpa = document.getElementById("cgpa").value;
+
+                let newS = {
+                    name: name,
+                    Id: id,
+                    cgpa: cgpa
+                };
+
+                student.push(newS);
+                renderTable();
+
+                document.getElementById("name").value = "";
+                document.getElementById("id").value = "";
+                document.getElementById("cgpa").value = "";
+            };
+            
+            window.onload = function() {
+                renderTable();
+            };
+
+        </script>
+    </body>
+</html>

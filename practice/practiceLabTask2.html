@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lost & Found Log</title>
+    </head>
+    <body>
+        <style>
+            table, th, td {
+                border: 1px solid black;
+                border-collapse: collapse;
+                padding: 6px 12px;
+            }
+            th {
+                background-color: #d4edda;
+            }
+        </style>
+        <h1 id="main-title" style="color: #1b4d3e;">Campus Found Items Registry</h1>
+        <form id="found-form" onsubmit="return handleFoundItem(event)">
+            <fieldset  style="width: 350px; margin: 0 auto 30px auto;">
+                <legend>Report Found Item</legend>
+                <div id="item_name">
+                    <label for="item-name">Item Name</label>
+                    <input type="text" id="item-name" placeholder="Bag, pen, Laptop, charger ....." required>
+                    <span class="error" id="name-err"></span>
+                </div>
+
+                <div id="reporter_id">
+                    <label for="reporter-id">Reporter ID</label>
+                    <input type="text" id="reporter-id" placeholder="xx-xxxxx-x" required>
+                    <span class="error" id="id-err"></span>
+                </div>
+
+                <div id="categories">
+                    <label for="item-category">Items Category</label>
+                    <select name="item-category" id="item-category">
+                        <option value="---Select Category---">---Select Category---</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Books">Books</option>
+                        <option value="personal Accessories">personal Accessories</option>
+                    </select>
+                </div>
+
+                <div id="item_value">
+                    <label for="item-value">Item Value</label>
+                    <input type="number" id="item-value" step="1" min="0" required>
+
+                    <br>
+                    <label for="location">Location</label>
+                    <input type="radio" name="location" value="Building D">
+                    <label for="location">Building D</label>
+                    <input type="radio" name="location" value="Cafeteria">
+                    <label for="location">Cafeteria</label>
+
+                    <br>
+                    <label for="varify_check">I verify this item was handed to Campus Security</label>
+                    <input type="checkbox" id="verify-check" required>
+                </div>
+                <button type="submit" style="margin: auto; color: red;">Submit</button>
+            </fieldset>
+        </form>
+
+        <div id="table-container">
+            <h1>Submit Details</h1>
+        </div>
+        <script>
+            let items = [
+                { name: "Casio Calculator", id: "24-57838-2", category: "Electronics", location: "Building D" }
+            ];
+
+            function renderTable(){
+                let container = document.getElementById("table-container");
+                container.innerHTML = "";
+
+                let table = document.createElement("table");
+
+                let table_tr = document.createElement("tr");
+                table.appendChild(table_tr);
+
+                let th_name = document.createElement("th");
+                th_name.innerText = "Item Name";
+                table_tr.appendChild(th_name);
+
+                let th_id = document.createElement("th");
+                th_id.innerText = "Reporter Id";
+                table_tr.appendChild(th_id);
+
+                let th_category = document.createElement("th");
+                th_category.innerText = "Category";
+                table_tr.appendChild(th_category);
+
+                let th_location = document.createElement("th");
+                th_location.innerText = "location";
+                table_tr.appendChild(th_location);
+
+                for(let item of items){
+                    let table_tr_item = document.createElement("tr");
+                    table.appendChild(table_tr_item);
+
+                    let th_name_i = document.createElement("td");
+                    th_name_i.innerText = item.name;
+                    table_tr_item.appendChild(th_name_i);
+
+                    let th_id_i = document.createElement("td");
+                    th_id_i.innerText = item.id;
+                    table_tr_item.appendChild(th_id_i);
+
+                    let th_category_i = document.createElement("td");
+                    th_category_i.innerText = item.category;
+                    table_tr_item.appendChild(th_category_i);
+
+                    let th_location_i = document.createElement("td");
+                    th_location_i.innerText = item.location;
+                    table_tr_item.appendChild(th_location_i);
+                }
+
+                container.appendChild(table);
+            };
+
+            function handleFoundItem(event){
+                event.preventDefault();
+
+                let nameVal = document.getElementById("item-name").value.trim();
+                let idVal = document.getElementById("reporter-id").value.trim();
+                let catVal = document.getElementById("item-category").value;
+                let valInput = document.getElementById("item-value").value;
+                let checkVal = document.getElementById("verify-check").checked;
+
+                let locRadios = document.getElementsByName("location");
+                let selectedLoc = "";
+                for (let r of locRadios) {
+                    if (r.checked) {
+                    selectedLoc = r.value;
+                    break;
+                    }
+                }
+
+                let new_items = {
+                    name: nameVal,
+                    id: idVal,
+                    category: catVal,
+                    location: selectedLoc
+                };
+
+                items.push(new_items);
+                renderTable();
+                document.getElementById("found-form").reset();
+                return false;
+            };
+
+            window.onload = function() {
+                renderTable();
+            };
+        </script>
+    </body>
+</html>

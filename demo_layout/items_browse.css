@@ -1,0 +1,438 @@
+/* ==========================================================================
+   Campus Lost and Found Platform - Items Browse Stylesheet (items_browse.css)
+   Course: CSC 3215 Web Technologies
+   Theme: University Slate & Royal Blue System
+   ========================================================================== */
+
+/* 1. Global Reset & Box Model */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    line-height: 1.5;
+}
+
+/* 2. Top Header & Navigation */
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e2e8f0;
+    padding: 12px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+#header_text h1 {
+    font-size: 19px;
+    color: #1a73e8;
+    font-weight: 700;
+}
+
+#header_text p {
+    font-size: 12px;
+    color: #64748b;
+}
+
+/* Quick Search in Header */
+header form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+header form label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+}
+
+header input[type="text"] {
+    width: 260px;
+    padding: 7px 12px;
+    font-size: 13px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+header input[type="text"]:focus {
+    border-color: #1a73e8;
+    box-shadow: 0 0 0 3px rgba(26, 115, 232, 0.15);
+}
+
+#submit {
+    padding: 7px 14px;
+    background-color: #1a73e8;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#submit:hover {
+    background-color: #1557b0;
+}
+
+/* Header Utilities Nav */
+#header_navigation ul {
+    list-style: none;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+#header_navigation ul li a {
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    padding: 6px 10px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#header_navigation ul li a:hover {
+    background-color: #f1f5f9;
+    color: #1a73e8;
+}
+
+/* 3. Outer Layout Container */
+body > div {
+    display: flex;
+    min-height: calc(100vh - 120px);
+}
+
+/* Sidebar Menu */
+aside {
+    width: 250px;
+    min-width: 250px;
+    background-color: #0f172a;
+    color: #f8fafc;
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#aside_nevigation h1 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: #94a3b8;
+    margin-bottom: 6px;
+    padding-left: 8px;
+}
+
+#aside_nevigation ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+#aside_nevigation ul li a {
+    display: block;
+    text-decoration: none;
+    color: #cbd5e1;
+    font-size: 14px;
+    padding: 10px 14px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+#aside_nevigation ul li a:hover,
+#aside_nevigation ul li a strong {
+    background-color: #1a73e8;
+    color: #ffffff;
+}
+
+#aside_ex_text {
+    margin-top: auto;
+    background-color: #1e293b;
+    padding: 14px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+}
+
+#aside_ex_text h4 {
+    font-size: 13px;
+    color: #38bdf8;
+    margin-bottom: 6px;
+}
+
+#aside_ex_text p {
+    font-size: 12px;
+    color: #94a3b8;
+    line-height: 1.4;
+}
+
+/* 4. Main Content Area */
+#main_body {
+    flex: 1;
+    padding: 32px 40px;
+    background-color: #f8fafc;
+    overflow-y: auto;
+}
+
+#main_head {
+    margin-bottom: 24px;
+}
+
+#main_head h1 {
+    font-size: 24px;
+    color: #0f172a;
+    margin-bottom: 6px;
+}
+
+#main_head p {
+    font-size: 14px;
+    color: #64748b;
+}
+
+/* 5. Filter Toolbar */
+#filter_section {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 18px 24px;
+    margin-bottom: 28px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+#filter_form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: flex-end;
+}
+
+.filter_field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+    min-width: 170px;
+}
+
+.filter_field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+}
+
+.filter_field select {
+    padding: 8px 12px;
+    font-size: 13px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background-color: #ffffff;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.filter_field select:focus {
+    border-color: #1a73e8;
+}
+
+.filter_buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#btn_apply_filter {
+    background-color: #1a73e8;
+    color: #ffffff;
+    border: none;
+    padding: 9px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+#btn_apply_filter:hover {
+    background-color: #1557b0;
+}
+
+#btn_clear_filter {
+    text-decoration: none;
+    color: #64748b;
+    background-color: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    padding: 8px 16px;
+    font-size: 13px;
+    font-weight: 600;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+}
+
+#btn_clear_filter:hover {
+    background-color: #e2e8f0;
+    color: #0f172a;
+}
+
+/* 6. Card Catalog Grid */
+#catalog_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.item_card {
+    position: relative;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.item_card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.09);
+}
+
+/* Status Badges */
+.badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge_found {
+    background-color: #e6f4ea;
+    color: #137333;
+}
+
+.badge_lost {
+    background-color: #fef3c7;
+    color: #b45309;
+}
+
+/* Image Placeholder Box */
+.card_img_placeholder {
+    height: 140px;
+    background-color: #f1f5f9;
+    color: #64748b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 600;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Card Body Content */
+.card_content {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.card_content h3 {
+    font-size: 16px;
+    color: #0f172a;
+    margin-bottom: 8px;
+}
+
+.card_content p {
+    font-size: 13px;
+    color: #475569;
+    margin-bottom: 4px;
+}
+
+.card_content p strong {
+    color: #1e293b;
+}
+
+.item_desc {
+    margin-top: 8px;
+    margin-bottom: 16px !important;
+    font-size: 12px !important;
+    color: #64748b !important;
+    line-height: 1.4;
+    flex: 1;
+}
+
+/* Card Action Buttons */
+.card_actions {
+    display: flex;
+    gap: 8px;
+    margin-top: auto;
+}
+
+.btn_card {
+    flex: 1;
+    text-align: center;
+    padding: 8px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.btn_claim {
+    background-color: #1a73e8;
+    color: #ffffff;
+}
+
+.btn_claim:hover {
+    background-color: #1557b0;
+}
+
+.btn_details {
+    background-color: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+}
+
+.btn_details:hover {
+    background-color: #e2e8f0;
+    color: #0f172a;
+}
+
+.full_width {
+    flex: 100%;
+}
+
+/* 7. Global Footer */
+footer {
+    background-color: #ffffff;
+    border-top: 1px solid #e2e8f0;
+    text-align: center;
+    padding: 16px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+footer p:last-child {
+    margin-top: 4px;
+    color: #94a3b8;
+}

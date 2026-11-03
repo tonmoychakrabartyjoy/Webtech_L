@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Browse Listings - Campus Lost and Found</title>
+        <link rel="stylesheet" href="items_browse.css">
+    </head>
+    <body>
+        <!-- Top Sticky Header -->
+        <header>
+            <div id="header_text">
+                <h1>Campus Lost &amp; Found</h1>
+                <p>AIUB</p>
+            </div>
+
+            <form action="items_browse.html" method="get">
+                <label for="search">Search</label>
+                <input type="text" id="search" name="q" placeholder="Search lost item, bag, pen .....">
+                <button id="submit" type="submit">Submit</button>
+            </form>
+
+            <nav id="header_navigation">
+                <ul>
+                    <li><a href="dashboard.html">Notifications(3)</a></li>
+                    <li><a href="profile.html">Tonmoy (Student)</a></li>
+                    <li><a href="login.html">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- Body Layout Container -->
+        <div>
+            <!-- Sidebar Navigation -->
+            <aside>
+                <nav id="aside_nevigation">
+                    <h1>Portal Nevigation</h1>
+                    <ul>
+                        <li><a href="dashboard.html">Dashboard</a></li>
+                        <li><a href="items_browse.html"><strong>Browse Listing</strong></a></li>
+                        <li><a href="report_lost.html">Report Lost Property</a></li>
+                        <li><a href="report_found.html">Report Found Property</a></li>
+                        <li><a href="report_history.html">My Reports and Claims</a></li>
+                        <li><a href="profile.html">Profile &amp; Settings</a></li>
+                    </ul>
+                </nav>
+                <div id="aside_ex_text">
+                    <h4>Campus Security Desk</h4>
+                    <p>Location: Ground Floor, Building D <br> Helpline: +880 155******8 </p>
+                </div>
+            </aside>
+
+            <!-- Main Workspace Area -->
+            <main id="main_body">
+                <div id="main_head">
+                    <h1>Browse Active Campus Listings</h1>
+                    <p>Search and filter all reported lost belongings and items found across campus grounds.</p>
+                </div>
+
+                <!-- Search and Filter Tool Bar -->
+                <div id="filter_section">
+                    <form action="items_browse.html" method="get" id="filter_form">
+                        <div class="filter_field">
+                            <label for="filter_cat">Category:</label>
+                            <select id="filter_cat" name="category">
+                                <option value="">All Categories</option>
+                                <option value="Electronics">Electronics</option>
+                                <option value="Bags & Wallets">Bags &amp; Wallets</option>
+                                <option value="Documents & IDs">Documents &amp; IDs</option>
+                                <option value="Books & Stationery">Books &amp; Stationery</option>
+                                <option value="Personal Accessories">Personal Accessories</option>
+                            </select>
+                        </div>
+
+                        <div class="filter_field">
+                            <label for="filter_loc">Location:</label>
+                            <select id="filter_loc" name="location">
+                                <option value="">All Campus Locations</option>
+                                <option value="Building D">Building D</option>
+                                <option value="Central Library">Central Library</option>
+                                <option value="Main Cafeteria">Campus Main Cafeteria</option>
+                                <option value="Annex 1-3">Annex Buildings</option>
+                                <option value="Parking Area">Basement Parking</option>
+                            </select>
+                        </div>
+
+                        <div class="filter_field">
+                            <label for="filter_type">Listing Status:</label>
+                            <select id="filter_type" name="type">
+                                <option value="">All Statuses</option>
+                                <option value="found">Found Items (Available to Claim)</option>
+                                <option value="lost">Lost Reports</option>
+                            </select>
+                        </div>
+
+                        <div class="filter_buttons">
+                            <button type="submit" id="btn_apply_filter">Apply Filters</button>
+                            <a href="items_browse.html" id="btn_clear_filter">Reset</a>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Responsive Card Catalog Grid -->
+                <div id="catalog_container">
+
+                    <!-- Item Card 1: Found Calculator -->
+                    <div class="item_card">
+                        <span class="badge badge_found">Found</span>
+                        <div class="card_img_placeholder">📷 Casio FX-991EX</div>
+                        <div class="card_content">
+                            <h3>Casio Scientific Calculator</h3>
+                            <p><strong>Category:</strong> Electronics</p>
+                            <p><strong>Location:</strong> Room D-204, Building D</p>
+                            <p><strong>Date:</strong> 27 Oct 2026</p>
+                            <p class="item_desc">Black scientific calculator with solar panel and silver keypad buttons.</p>
+                            <div class="card_actions">
+                                <a href="claim_item.html?id=101" class="btn_card btn_claim">Claim Item</a>
+                                <a href="#" class="btn_card btn_details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item Card 2: Lost Backpack -->
+                    <div class="item_card">
+                        <span class="badge badge_lost">Lost</span>
+                        <div class="card_img_placeholder">📷 Navy Backpack</div>
+                        <div class="card_content">
+                            <h3>Navy Blue Backpack</h3>
+                            <p><strong>Category:</strong> Bags &amp; Wallets</p>
+                            <p><strong>Location:</strong> Main Cafeteria</p>
+                            <p><strong>Date:</strong> 26 Oct 2026</p>
+                            <p class="item_desc">Contains midterm notebooks, student ID card, and a black water bottle.</p>
+                            <div class="card_actions">
+                                <a href="#" class="btn_card btn_details full_width">Report Found Match</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item Card 3: Found Student ID Card -->
+                    <div class="item_card">
+                        <span class="badge badge_found">Found</span>
+                        <div class="card_img_placeholder">📷 AIUB Student ID</div>
+                        <div class="card_content">
+                            <h3>Student ID Card</h3>
+                            <p><strong>Category:</strong> Documents &amp; IDs</p>
+                            <p><strong>Location:</strong> Central Library 3rd Floor</p>
+                            <p><strong>Date:</strong> 28 Oct 2026</p>
+                            <p class="item_desc">Found on study desk #14. Deposited at the Central Library inquiry counter.</p>
+                            <div class="card_actions">
+                                <a href="claim_item.html?id=103" class="btn_card btn_claim">Claim Item</a>
+                                <a href="#" class="btn_card btn_details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item Card 4: Found Laptop Charger -->
+                    <div class="item_card">
+                        <span class="badge badge_found">Found</span>
+                        <div class="card_img_placeholder">📷 HP 65W Charger</div>
+                        <div class="card_content">
+                            <h3>HP Laptop Charger (65W)</h3>
+                            <p><strong>Category:</strong> Electronics</p>
+                            <p><strong>Location:</strong> Annex 2 Lab Room</p>
+                            <p><strong>Date:</strong> 25 Oct 2026</p>
+                            <p class="item_desc">Black charging brick with blue-tip round barrel connector.</p>
+                            <div class="card_actions">
+                                <a href="claim_item.html?id=104" class="btn_card btn_claim">Claim Item</a>
+                                <a href="#" class="btn_card btn_details">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item Card 5: Lost Car / Locker Keys -->
+                    <div class="item_card">
+                        <span class="badge badge_lost">Lost</span>
+                        <div class="card_img_placeholder">📷 Keyring with Tag</div>
+                        <div class="card_content">
+                            <h3>Bike Key with Red Lanyard</h3>
+                            <p><strong>Category:</strong> Keys</p>
+                            <p><strong>Location:</strong> Basement Parking Area</p>
+                            <p><strong>Date:</strong> 28 Oct 2026</p>
+                            <p class="item_desc">Set of 2 keys with a red Honda fabric tag and small silver token.</p>
+                            <div class="card_actions">
+                                <a href="#" class="btn_card btn_details full_width">Report Found Match</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item Card 6: Found Notebook -->
+                    <div class="item_card">
+                        <span class="badge badge_found">Found</span>
